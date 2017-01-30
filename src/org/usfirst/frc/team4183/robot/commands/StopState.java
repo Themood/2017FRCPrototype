@@ -12,6 +12,7 @@ public class StopState extends Command {
     public StopState() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires( Robot.climbPrototypeSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -22,6 +23,7 @@ public class StopState extends Command {
     protected void execute() {
       	double drive = 0.0;
     	Robot.climbPrototypeSubsystem.on(drive);
+    	System.out.println("I've stop, please help");
     }
 
     // Make this return true when this Command no longer needs to run execute()

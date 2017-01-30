@@ -13,6 +13,7 @@ public class RevState extends Command {
     public RevState() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.climbPrototypeSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -23,6 +24,7 @@ public class RevState extends Command {
     protected void execute() {
     	double drive = -1.0;
     	Robot.climbPrototypeSubsystem.on(drive);
+    	System.out.println("I'm going reverse at -1.0");
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -29,6 +29,7 @@ public class FwdState extends Command {
     protected void execute() {
       	double drive = 1.0;
     	Robot.climbPrototypeSubsystem.on(drive);
+    	System.out.println("I'm going foward at 1.0");
     }
     
     // Make this return true when this Command no longer needs to run execute()
@@ -36,10 +37,11 @@ public class FwdState extends Command {
     {
     	if ( (timeSinceInitialized() < 1.0) && (Robot.climbPrototypeSubsystem.current() >= 40) ) {
     		return CommandUtils.stateChange( new RevState() );
+    		
     	}
     	if ((timeSinceInitialized() > 1.0) && (Robot.climbPrototypeSubsystem.current() >=40) ) {
     		return CommandUtils.stateChange(new StopState() );
-    	
+    		
     	}
     	return false;
     }
