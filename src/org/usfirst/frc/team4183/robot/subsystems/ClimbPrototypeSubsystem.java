@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4183.robot.subsystems;
 
-import org.usfirst.frc.team4183.robot.commands.ClimbPrototypeCommand;
+import org.usfirst.frc.team4183.robot.commands.FwdState;
 
 import com.ctre.CANTalon;
 
@@ -13,21 +13,34 @@ public class ClimbPrototypeSubsystem extends Subsystem {
 	private CANTalon motor = new  CANTalon(MOTOR_NUM);
 	private TalonCurrentLogger logger = new TalonCurrentLogger(motor);
 	
+	
 	public void start() {
 		logger.start();
 		System.out.println("start");
 	}
 	
-	public void execute( double drive) {
+	public void on( double drive) {
 		motor.set(drive);
 		double current = motor.getOutputCurrent();
-		SmartDashboard.putNumber("ClimbMotorCurrent", current);
+		SmartDashboard.putNumber("ClimbMotorCurrent", current); 
+		
+	}
+	public void off(double drive){
+		
 	}
 	
+	public double current(){
+		
+		double current = motor.getOutputCurrent(); 
+		SmartDashboard.putNumber("ClimbMotorCurrent", current);
+		return current;
+		
+	} 
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		setDefaultCommand(new ClimbPrototypeCommand()); 
+		setDefaultCommand(new FwdState()); 
+		
 	}
 
 }
